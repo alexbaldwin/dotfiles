@@ -1,0 +1,17 @@
+[alias]
+  l = log --pretty=colored
+[diff]
+  tool = vimdiff
+[merge]
+  tool = vimdiff
+[mergetool "vimdiff"]
+  cmd = vimdiff -f $LOCAL $MERGED $REMOTE
+[pretty]
+  colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+[user]
+  email = alexbaldwin@gmail.com
+  name = Alex Baldwin
+[github]
+  user = alexbaldwin
+[ghi]
+  token = !security find-internet-password -a alexbaldwin -s github.com -l 'ghi token' -w
