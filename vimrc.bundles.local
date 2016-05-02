@@ -12,4 +12,3 @@ Plug 'tpope/vim-markdown'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'rdekar/ember.vim'

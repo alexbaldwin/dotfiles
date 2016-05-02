@@ -1,0 +1,5 @@
+config defaultToCurrentScreen true
+
+bind right:alt       corner top-right resize:screenSizeX/2;screenSizeY
+bind left:alt        corner top-left resize:screenSizeX/2;screenSizeY
+bind up:alt          corner top-left resize:screenSizeX;screenSizeY
