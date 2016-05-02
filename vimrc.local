@@ -54,3 +54,5 @@ nnoremap <C-p>t :call FuzzyFindCommand("tabnew")<cr>
 nnoremap <C-p>v :call FuzzyFindCommand("vsplit")<cr>
 nnoremap <C-p>s :call FuzzyFindCommand("split")<cr>
 
+" Vim autosave
+let g:session_autosave = 'no'
