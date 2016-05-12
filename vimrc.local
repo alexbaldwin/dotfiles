@@ -56,3 +56,6 @@ nnoremap <C-p>s :call FuzzyFindCommand("split")<cr>
 
 " Vim autosave
 let g:session_autosave = 'no'
+
+" Disable text wrapping at 80 characters
+set tw=0
