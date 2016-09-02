@@ -1,6 +1,7 @@
 cask 'cleanmymac'
 cask 'dropbox'
 cask 'flux'
+cask 'gpgtools'
 cask 'imagealpha'
 cask 'imageoptim'
 cask 'iterm2'
