@@ -1,6 +1,8 @@
 Plug 'conradIrwin/vim-bracketed-paste'
 Plug 'flazz/vim-colorschemes'
 Plug 'gmist/vim-palette'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mikewest/vimroom'
 Plug 'mustache/vim-mustache-handlebars'
@@ -13,4 +15,3 @@ Plug 'tpope/vim-haml'
 Plug 'tpope/vim-markdown'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
