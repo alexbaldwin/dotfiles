@@ -1,11 +1,5 @@
 # Ruby static server
 alias serve="ruby -run -ehttpd . -p8000"
 
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate"
-alias m="migrate"
-alias b="bundle install --binstubs"
-
 # Unix
 alias ...='../..'
-alias mkdir='mkdir -p'
