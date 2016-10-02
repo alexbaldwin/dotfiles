@@ -14,3 +14,8 @@ cask 'spotify'
 cask 'the-unarchiver'
 cask 'vlc'
 cask 'xquartz'
+
+brew 'openssl'
+brew 'curl'
+brew 'git'
+
