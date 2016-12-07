@@ -1,3 +1,4 @@
+cask 'google-chrome'
 cask 'cleanmymac'
 cask 'dropbox'
 cask 'flux'
@@ -15,8 +16,13 @@ cask 'spotify'
 cask 'the-unarchiver'
 cask 'vlc'
 cask 'xquartz'
+cask 'nylas-n1'
 
 brew 'openssl'
 brew 'curl'
 brew 'git'
+brew 'ruby-build'
+brew 'rbenv'
+brew 'redis'
+brew 'hub'
 
