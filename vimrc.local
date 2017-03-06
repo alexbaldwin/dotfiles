@@ -59,3 +59,15 @@ let g:session_autosave = 'no'
 
 " Disable text wrapping at 80 characters
 set tw=0
+
+" Ignore JS files for searching
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|git|svn))$'
+
+" Prettier is an opinionated JavaScript formatter. https://github.com/jlongster/prettier
+" autocmd FileType javascript set formatprg=prettier\ --stdin
+" autocmd BufWritePre *.js :normal gggqG
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+
+" vim-jsx
+let g:jsx_ext_required = 0
+

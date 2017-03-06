@@ -26,4 +26,4 @@ brew 'openssl'
 brew 'rbenv'
 brew 'redis'
 brew 'ruby-build'
-
+brew 'node'

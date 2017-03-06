@@ -13,3 +13,7 @@ auto-ls () {
 chpwd_functions=( auto-ls $chpwd_functions )
 
 cd /Users/alexbaldwin/Sites
+
+# Pure prompt https://github.com/sindresorhus/pure
+autoload -U promptinit; promptinit
+prompt pure
