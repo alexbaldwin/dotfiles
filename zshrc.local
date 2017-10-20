@@ -1,8 +1,4 @@
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export PATH=/usr/local/bin:$PATH
-export HOMEBREW_NO_ANALYTICS=1
-eval "$(rbenv init -)"
-eval "$(hub alias -s)"
+export PGDATABASE=postgres
 
 # Automatically list directory contents on `cd`.
 auto-ls () {
@@ -14,6 +10,3 @@ chpwd_functions=( auto-ls $chpwd_functions )
 
 cd /Users/alexbaldwin/Sites
 
-# Pure prompt https://github.com/sindresorhus/pure
-autoload -U promptinit; promptinit
-prompt pure

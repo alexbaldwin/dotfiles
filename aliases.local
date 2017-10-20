@@ -1,5 +1,8 @@
 # Ruby static server
 alias serve="ruby -run -ehttpd . -p8000"
 
+# Vim
+alias vi="vim"
+
 # Unix
 alias ...='../..'
