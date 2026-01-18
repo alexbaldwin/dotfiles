@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a personal fork of thoughtbot's dotfiles, managing macOS development environment configuration through RCM (RC file manager). Configuration files are symlinked from this repo to the home directory.
+Personal dotfiles based on thoughtbot's dotfiles, managed via RCM. Configuration files are symlinked from this repo to the home directory.
 
 ## Key Commands
 
@@ -17,35 +17,29 @@ rcup
 
 # Install Homebrew packages
 brew bundle --file=Brewfile
+
+# Install vim plugins
+vim +PlugInstall +qall
 ```
 
 ## Architecture
 
 **Customization Pattern**: Base thoughtbot configs are extended via `.local` suffix files:
-- `vimrc.local` - Vim customizations (FZF, colorscheme, plugins)
+- `zshrc.local` - Pure prompt, version managers (rbenv, asdf, pyenv), pnpm, bun, go, claude/codex
+- `gitconfig.local` - User config, git-lfs, nvimdiff as diff/merge tool
+- `vimrc.local` - FZF keybindings, jellybeans colorscheme, ripgrep integration
 - `vimrc.bundles.local` - Additional vim-plug plugins
-- `gitconfig.local` - Git user config, GPG signing, aliases
-- `zshrc.local` - Shell customizations, PostgreSQL config
-- `aliases.local` - Custom shell aliases
+- `aliases.local` - Custom shell aliases (serve, vi→nvim)
 
-**Key Configuration Files**:
-- `Brewfile` - Homebrew packages and casks
-- `slate` - Window manager hotkeys (Alt+arrows)
-- `rcrc` - RCM settings (excludes README/LICENSE, precedence for dotfiles-local)
+**Key Files**:
+- `Brewfile` - Core tools: neovim, fzf, ripgrep, gh, version managers, languages
+- `rcrc` - RCM config (excludes markdown/license, precedence for dotfiles-local)
 
-**Plugin Management**:
-- Vim plugins via vim-plug (defined in `vimrc.bundles.local`)
-- FZF integration with Ctrl+P bindings for file finding
+**Vim Keybindings**:
+- `Ctrl+P` - FZF file finder
+- `Ctrl+G` - Ripgrep search
 
-## Vim Keybindings
-
-- `Ctrl+P` - Fuzzy file finder (FZF)
-- `Ctrl+P, t` - Open in new tab
-- `Ctrl+P, v` - Vertical split
-- `Ctrl+P, s` - Horizontal split
-
-## Notes
-
-- All git commits are GPG signed by default
-- Working directory starts in `~/Sites`
-- PostgreSQL database defaults to `postgres`
+**Shell Features**:
+- Lazy-loaded version managers for fast startup
+- Claude Code aliases: `c`, `claude`
+- Codex wrapper: `cdx`

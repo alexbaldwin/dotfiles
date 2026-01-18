@@ -1,12 +1,74 @@
-export PGDATABASE=postgres
+# Pure prompt
+autoload -U promptinit; promptinit
+prompt pure
 
-# Automatically list directory contents on `cd`.
-auto-ls () {
-  emulate -L zsh;
-  # explicit sexy ls'ing as aliases arent honored in here.
-  hash gls >/dev/null 2>&1 && CLICOLOR_FORCE=1 gls -aFh --color --group-directories-first || ls
+# rbenv
+if command -v rbenv &> /dev/null; then
+  eval "$(rbenv init - zsh)"
+fi
+
+# Lazy load asdf to speed up shell startup
+asdf() {
+  unfunction asdf
+  if [ -f /usr/local/opt/asdf/libexec/asdf.sh ]; then
+    . /usr/local/opt/asdf/libexec/asdf.sh
+  elif [ -f "$HOME/.asdf/asdf.sh" ]; then
+    . "$HOME/.asdf/asdf.sh"
+  fi
+  asdf "$@"
 }
-chpwd_functions=( auto-ls $chpwd_functions )
 
-cd /Users/alexbaldwin/Sites
+# Lazy load pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+pyenv() {
+  unfunction pyenv
+  eval "$(command pyenv init -)"
+  pyenv "$@"
+}
 
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# Go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
+# Claude Code
+alias claude="$HOME/.claude/local/claude"
+alias c="claude"
+
+# uv (Python)
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# Codex
+cdx() {
+  if [[ "$1" == "update" ]]; then
+    npm install -g @openai/codex@latest
+  else
+    codex \
+      --model 'gpt-5-codex' \
+      --full-auto \
+      -c model_reasoning_summary_format=experimental \
+      --search "$@"
+  fi
+}
+
+# Reset audio crackling
+fixaudio() {
+  sudo rm -f /Library/Preferences/Audio/com.apple.audio.DeviceSettings.plist
+  sudo rm -f /Library/Preferences/Audio/com.apple.audio.SystemSettings.plist
+  sudo killall coreaudiod
+}
+
+# Start in Sites directory
+cd ~/Sites

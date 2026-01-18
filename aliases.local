@@ -1,8 +1,9 @@
-# Ruby static server
-alias serve="ruby -run -ehttpd . -p8000"
+# Git shortcut
+alias g="git"
 
-# Vim
-alias vi="vim"
+# Static file server
+alias serve="npx serve -p 8000"
 
-# Unix
-alias ...='../..'
+# Neovim
+alias vi="nvim"
+alias vim="nvim"

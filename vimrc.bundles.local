@@ -1,18 +1,18 @@
-Plug 'conradIrwin/vim-bracketed-paste'
-Plug 'flazz/vim-colorschemes'
-Plug 'gmist/vim-palette'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+" Fuzzy finding
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mattn/emmet-vim'
-Plug 'mikewest/vimroom'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/html5.vim'
+
+" Color schemes
+Plug 'nanotech/jellybeans.vim'
+Plug 'flazz/vim-colorschemes'
+
+" Language support
 Plug 'pangloss/vim-javascript'
-Plug 'rking/ag.vim'
-Plug 'sjl/gundo.vim'
-Plug 'tomasr/molokai'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-markdown'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
 Plug 'mxw/vim-jsx'
+Plug 'othree/html5.vim'
+Plug 'tpope/vim-markdown'
+Plug 'mattn/emmet-vim'
+
+" Utilities
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'

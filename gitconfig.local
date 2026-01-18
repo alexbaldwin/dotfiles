@@ -1,20 +1,39 @@
-[alias]
-  l = log --pretty=colored
-[diff]
-  tool = vimdiff
-[merge]
-  tool = vimdiff
-[mergetool "vimdiff"]
-  cmd = vimdiff -f $LOCAL $MERGED $REMOTE
-[pretty]
-  colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
 [user]
   email = alexbaldwin@gmail.com
   name = Alex Baldwin
+
 [github]
   user = alexbaldwin
-[ghi]
-  token = !security find-internet-password -a alexbaldwin -s github.com -l 'ghi token' -w
-[commit]
-  gpgsign = true
 
+[init]
+  defaultBranch = main
+
+[push]
+  autoSetupRemote = true
+
+[pull]
+  rebase = true
+
+[http]
+  postBuffer = 157286400
+
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+
+[alias]
+  l = log --pretty=colored
+
+[pretty]
+  colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
+
+[diff]
+  tool = nvimdiff
+
+[merge]
+  tool = nvimdiff
+
+[mergetool "nvimdiff"]
+  cmd = nvim -d $LOCAL $MERGED $REMOTE

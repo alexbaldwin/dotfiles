@@ -1,73 +1,29 @@
+" Appearance
 syntax enable
-let g:rehash256 = 1
-let g:session_autosave = 'no'
-let g:session_autoload = 'no'
 colorscheme jellybeans
-filetype plugin on
 set number
-command Gist :!gist -p -c -o %
-set rtp+=~/.fzf
+set nowrap
 
-" Concatenate the directory into the ls-files command
-function! GitListCommand(directory)
-  return "git ls-files " . a:directory . " --cached --exclude-standard --others"
-endfunction
+" FZF fuzzy finder
+set rtp+=/usr/local/opt/fzf
+nnoremap <C-p> :Files<cr>
+nnoremap <C-p>e :Files<cr>
+nnoremap <C-p>t :tabnew<cr>:Files<cr>
+nnoremap <C-p>v :vsplit<cr>:Files<cr>
+nnoremap <C-p>s :split<cr>:Files<cr>
+nnoremap <C-g> :Rg<cr>
 
-" Command for searching folders even if they
-" aren't tracked with git
-function! SearchCommand()
-  let l:command = ""
-  if isdirectory(".git")
-    let l:command = GitListCommand(".")
-  endif
+" Use ripgrep for :grep
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case
+endif
 
-  if strlen(l:command) < 1
-    let l:output = system("git rev-parse --show-toplevel")
-    if v:shell_error == 0
-      let l:output = substitute(l:output, "\\n", "", "")
-      let l:command = GitListCommand(l:output)
-    else
-      let l:command = "find * -type f -o -type l"
-    endif
-  endif
-
-  return l:command
-endfunction
-
-function! s:EscapeFilePath(path)
-  return substitute(a:path, ' ', '\\ ', 'g')
-endfunction
-
-function! FuzzyFindCommand(vimCommand)
-  try
-    execute ':call fzf#run({"sink": "' . a:vimCommand . '", "source": "' . SearchCommand() . '"})'
-  catch /Vim:Interrupt/
-    " Catch the ^C so that the redraw happens
-    redraw!
-    return
-  endtry
-endfunction
-
-nnoremap <C-p>  :call FuzzyFindCommand("edit")<cr>
-nnoremap <C-p>e :call FuzzyFindCommand("edit")<cr>
-nnoremap <C-p>t :call FuzzyFindCommand("tabnew")<cr>
-nnoremap <C-p>v :call FuzzyFindCommand("vsplit")<cr>
-nnoremap <C-p>s :call FuzzyFindCommand("split")<cr>
-
-" Vim autosave
-let g:session_autosave = 'no'
-
-" Disable text wrapping at 80 characters
-set tw=0
-
-" Ignore JS files for searching
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|git|svn))$'
-
-" Prettier is an opinionated JavaScript formatter. https://github.com/jlongster/prettier
-" autocmd FileType javascript set formatprg=prettier\ --stdin
-" autocmd BufWritePre *.js :normal gggqG
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-
-" vim-jsx
+" JSX in .js files
 let g:jsx_ext_required = 0
 
+" Session management
+let g:session_autosave = 'no'
+let g:session_autoload = 'no'
+
+" Gist current file
+command Gist :!gist -p -c -o %
