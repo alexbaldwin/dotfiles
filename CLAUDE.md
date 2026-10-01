@@ -4,42 +4,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-Personal dotfiles based on thoughtbot's dotfiles, managed via RCM. Configuration files are symlinked from this repo to the home directory.
+Personal dotfiles with a simple, self-contained setup. Uses oh-my-zsh for shell features and a simple install script for symlinks.
 
 ## Key Commands
 
 ```bash
-# Install dotfiles (first time)
-env RCRC=$HOME/dotfiles/rcrc rcup
-
-# Update symlinks after changes
-rcup
+# Install dotfiles (creates symlinks, installs oh-my-zsh)
+./install.sh
 
 # Install Homebrew packages
 brew bundle --file=Brewfile
-
-# Install vim plugins
-vim +PlugInstall +qall
 ```
 
-## Architecture
+## Directory Structure
 
-**Customization Pattern**: Base thoughtbot configs are extended via `.local` suffix files:
-- `zshrc.local` - Pure prompt, version managers (rbenv, asdf, pyenv), pnpm, bun, go, claude/codex
-- `gitconfig.local` - User config, git-lfs, nvimdiff as diff/merge tool
-- `vimrc.local` - FZF keybindings, jellybeans colorscheme, ripgrep integration
-- `vimrc.bundles.local` - Additional vim-plug plugins
-- `aliases.local` - Custom shell aliases (serve, vi→nvim)
+```
+dotfiles/
+├── install.sh           # Symlink setup script
+├── Brewfile             # Homebrew packages
+├── CLAUDE.md            # Project instructions
+├── git/
+│   └── gitconfig        # Git config (include ~/.gitconfig.local for user info)
+├── shell/
+│   └── zshrc            # Shell config with oh-my-zsh
+└── vim/
+    └── vimrc            # Vim config
+```
 
-**Key Files**:
-- `Brewfile` - Core tools: neovim, fzf, ripgrep, gh, version managers, languages
-- `rcrc` - RCM config (excludes markdown/license, precedence for dotfiles-local)
+## Configuration
 
-**Vim Keybindings**:
-- `Ctrl+P` - FZF file finder
-- `Ctrl+G` - Ripgrep search
+**Git**: User-specific settings in `~/.gitconfig.local`:
+```gitconfig
+[user]
+    name = Your Name
+    email = your@email.com
+```
+
+**Shell**: Machine-specific settings in `~/.zshrc.local`
 
 **Shell Features**:
-- Lazy-loaded version managers for fast startup
+- oh-my-zsh with robbyrussell theme
+- zsh-autosuggestions and zsh-syntax-highlighting plugins
+- Lazy-loaded version managers (rbenv, pyenv, asdf)
 - Claude Code aliases: `c`, `claude`
 - Codex wrapper: `cdx`

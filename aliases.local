@@ -1,9 +1,0 @@
-# Git shortcut
-alias g="git"
-
-# Static file server
-alias serve="npx serve -p 8000"
-
-# Neovim
-alias vi="nvim"
-alias vim="nvim"

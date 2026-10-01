@@ -1,0 +1,53 @@
+[include]
+    path = ~/.gitconfig.local
+
+[user]
+    # Set in ~/.gitconfig.local:
+    # name = Your Name
+    # email = your@email.com
+
+[credential]
+    helper = osxkeychain
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[push]
+    autoSetupRemote = true
+    default = current
+
+[diff]
+    tool = nvimdiff
+
+[difftool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = nvimdiff
+
+[mergetool "nvimdiff"]
+    cmd = nvim -d "$LOCAL" "$REMOTE" "$MERGED" -c 'wincmd J'
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[alias]
+    st = status
+    co = checkout
+    cob = checkout -b
+    recent = branch --sort=-committerdate
+    undo = reset --soft HEAD~1
+    amend = commit --amend --no-edit
+    cleanup = !git branch --no-color | fzf -m | xargs -I {} git branch -D '{}'
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

@@ -1,0 +1,32 @@
+" General
+set nocompatible
+set number
+set nowrap
+set backspace=2
+set history=50
+set ruler
+set showcmd
+set incsearch
+set hlsearch
+set laststatus=2
+set autowrite
+set autoread
+
+" Theme (uses terminal colors)
+syntax on
+
+" Tabs
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+
+" Ripgrep
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+endif
+
+" Local config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
